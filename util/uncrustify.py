@@ -1,31 +1,20 @@
 #!/bin/python
 
-import xml.etree.ElementTree as ET
 import sys
-import tempfile
 
-fname=sys.argv[1]
 
 def main():
-    # tree = ET.parse(sys.argv[1])
-    lyxfile = open(fname,'r')
-    tmp=tempfile.TemporaryFile('w+')
-    lyxtabular=False
-    for line in lyxfile:
-        if 'lyxtabular' in line and lyxtabular:
-            tmp.write(line)
-            break
-        if 'lyxtabular' in line and not lyxtabular:
-            print('found')
-            lyxtabular = True
-        if lyxtabular and not ('features' in line or 'column' in line):
-            print('printing')
-            tmp.write(line)
+    tabular=False
+    rows=[]
+    for line in open(sys.argv[1]):
+        if '\\begin{tabular}' in line:
+            tabular=True
+        if tabular and '\\tabularnewline' in line:
+            rows.append([c.strip() for c in line.rsplit('\\tabularnewline',1)[0].split('&')])
+        if '\\end{tabular}' in line:
+            tabular=False
 
-    tmp.seek(0)
-    print(tmp.read())
-
-    # r=tree.getroot()
+    print(rows)
 
 if __name__ == "__main__":
     main()
