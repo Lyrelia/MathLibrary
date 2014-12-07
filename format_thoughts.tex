@@ -1,0 +1,34 @@
+%% LyX 2.0.5.1 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\begin{tabular}{|c|c|c|c|}
+\hline 
+key & Object Name & Attributed Text & Node file & Object Type & children\tabularnewline
+\hline 
+\hline 
+cregspace & Completely Regular Space & $X$ is \uline{completely regular} if, for every \uline{point}
+$x\in X$ and \uline{closed set} $C\subset X$ s.t. $x\notin C$,
+there exists a \uline{map} $f\ :\ X\to\underline{[0,1]}$ s.t.
+$f(x)=0$ and $f(y)=1$ for every $y\in C.$ & (Thing that will show up in node, picture, animnation) & Definition & test,test2,test3\tabularnewline
+cregspace & Completely Regular Space & $X$ is \href{link}{completely regular} if, for every \uline{point}
+$x\in X$ and \uline{closed set} $C\subset X$ s.t. $x\notin C$,
+there exists a \uline{map} $f\ :\ X\to\underline{[0,1]}$ s.t.
+$f(x)=0$ and $f(y)=1$ for \href{link}{completely regular}every $y\in C.$ & (Thing that will show up in node, picture, animnation)\href{link}{completely regular} & Definition & test,test2,test3\tabularnewline
+\hline 
+\end{tabular}
+\end{document}
