@@ -4,8 +4,6 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:output method="text" indent="no" encoding="UTF-8"/>
 
-<xsl:key name="type" match="node" use="object_type"/>
-
 <xsl:template match="/">
 digraph {
   <xsl:for-each select="graph/node">
