@@ -17,7 +17,7 @@ def commasplit(t,s):
 def maketree(t,s):
     if t in tag.keys():
         return tag[t](s)
-    else:
+    else: # default handling
         r=ET.Element(t)
         r.text=s
         return r
