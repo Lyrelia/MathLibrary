@@ -4,7 +4,8 @@ import xml.etree.ElementTree as ET
 import re
 import sys
 
-tag = { 'children' : lambda s: commasplit('children',s) } 
+tag = { 'children' : lambda s: commasplit('children',s),
+        'attributed_text' : lambda s: convertlinks('attributed_text',s) }
 
 def commasplit(t,s):
     r=ET.Element(t)
@@ -13,6 +14,20 @@ def commasplit(t,s):
         e.text=c
         r.append(e)
     return r
+
+def convertlinks(t,s):
+    sl=re.split('\\\\href\\{(.*?)\\}\\{(.*?)\\}',s)
+    tb=ET.TreeBuilder()
+    tb.start(t)
+    for i in range(len(sl)):
+        if i % 3 == 0: # between matches
+            tb.data(sl[i])
+        elif i % 3 == 1: # i, i+1 matching groups
+            tb.start('a',{'href' : sl[i]})
+            tb.data(sl[i+1])
+            tb.end('a')
+    tb.end(t)
+    return tb.close()
 
 def maketree(t,s):
     if t in tag.keys():
