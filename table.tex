@@ -1,0 +1,46 @@
+%% LyX 2.0.5.1 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\begin{tabular}{|c|c|c|c|}
+\hline 
+key & Object Name & Attributed Text & Node file & Object Type & children\tabularnewline
+\hline 
+\hline 
+s1 & Space 1 & $X$ is \underline{completely regular} if, for every \underline{point}
+$x\in X$ and \underline{closed set} $C\subset X$ s.t. $x\notin C$,
+underline exists a \underline{map} $f\ :\ X\to\underline{[0,1]}$ s.t.
+$f(x)=0$ and $f(y)=1$ for every $y\in C.$ & (Thing that will show up in node, picture, animnation) & Definition & test,test2,test3\tabularnewline
+s2 & Space 2& $X$ is \href{s2}{completely regular} if, for every \underline{point}
+$x\in X$ and \underline{closed set} $C\subset X$ s.t. $x\notin C$,
+underline exists a \underline{map} $f\ :\ X\to\underline{[0,1]}$ s.t.
+$f(x)=0$ and $f(y)=1$ for \href{s3}{completely regular}every $y\in C.$ & (Thing that will show up in node, picture, animnation)\href{s1}{completely regular} & Definition & test,test2,test3\tabularnewline
+s3 & Space 3 & $X$ is \href{s4}{completely regular} if, for every \underline{point}
+$x\in X$ and \underline{closed set} $C\subset X$ s.t. $x\notin C$,
+underline exists a \underline{map} $f\ :\ X\to\underline{[0,1]}$ s.t.
+$f(x)=0$ and $f(y)=1$ for \href{s5}{completely regular}every $y\in C.$ & (Thing that will show up in node, picture, animnation)\href{s1}{completely regular} & Definition & test,test2,test3\tabularnewline
+s4 & Space 4 & $X$ is \href{s2}{completely regular} if, for every \underline{point}
+$x\in X$ and \underline{closed set} $C\subset X$ s.t. $x\notin C$,
+underline exists a \underline{map} $f\ :\ X\to\underline{[0,1]}$ s.t.
+$f(x)=0$ and $f(y)=1$ for \href{s2}{completely regular}every $y\in C.$ & (Thing that will show up in node, picture, animnation)\href{s1}{completely regular} & Definition & test,test2,test3\tabularnewline
+s5 & Space 5& $X$ is \href{s2}{completely regular} if, for every \underline{point}
+$x\in X$ and \underline{closed set} $C\subset X$ s.t. $x\notin C$,
+underline exists a \underline{map} $f\ :\ X\to\underline{[0,1]}$ s.t.
+$f(x)=0$ and $f(y)=1$ for \href{s3}{completely regular}every $y\in C.$ & (Thing that will show up in node, picture, animnation)\href{s2}{completely regular} & Definition & test,test2,test3\tabularnewline
+\hline 
+\end{tabular}
+\end{document}
