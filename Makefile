@@ -1,4 +1,5 @@
 bname=table
+ibname=index
 edgelen=3
 
 neatoargs=-Elen=$(edgelen)
@@ -17,6 +18,12 @@ $(bname).png $(bname).map: $(bname).dot
 
 $(bname).html: $(bname).xml $(bname).map $(bname).png
 	xsltproc util/gtohtml.xsl $(bname).map > $@
+
+$(ibname).tex: $(bname).xml
+	xsltproc util/index.xsl $< > $@
+
+$(ibname).html: $(ibname).tex
+	htlatex $< "util/ht5mjlatex.cfg,charset=utf-8,3,next" " -cunihtf -utf8"
 
 clean:
 	rm -f $(bname).{xml,dot,png,map,html}
