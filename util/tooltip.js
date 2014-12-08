@@ -1,3 +1,9 @@
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+  }
+});
+
 $(function() {
   $('area').tooltip({
     track: true,
