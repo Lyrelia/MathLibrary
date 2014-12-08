@@ -4,8 +4,10 @@ import xml.etree.ElementTree as ET
 import re
 import sys
 
-tag = { 'children' : lambda s: commasplit('children',s),
+tag = { 'links' : lambda s: linkstoxml('links',s,False),
         'attributed_text' : lambda s: linkstohyperref('attributed_text',s) }
+
+newtag = { 'links' : 'attributed_text' }
 
 def commasplit(t,s):
     r=ET.Element(t)
@@ -21,12 +23,12 @@ def linkstohyperref(t,s):
     r.text=re.sub('\\\\href{(.*?)}{(.*?)}','\hyperref[\\1]{\\2}',s)
     return r
 
-def linkstoxml(t,s):
+def linkstoxml(t,s,keeptext):
     sl=re.split('\\\\href\\{(.*?)\\}\\{(.*?)\\}',s)
     tb=ET.TreeBuilder()
     tb.start(t)
     for i in range(len(sl)):
-        if i % 3 == 0: # between matches
+        if i % 3 == 0 and keeptext: # between matches
             tb.data(sl[i])
         elif i % 3 == 1: # i, i+1 matching groups
             tb.start('a',{'href' : sl[i]})
@@ -58,12 +60,17 @@ def readfile(fname):
 
     colheader=[re.sub(' ','_',c.lower()) for c in mat[0]]
     mat=mat[1:]
+    matd = [{ colheader[i]: mat[j][i] for i in range(len(colheader)) } 
+            for j in range(len(mat))]
 
     graph=ET.Element('graph')
-    for row in mat:
+    for row in matd:
         r=ET.SubElement(graph,'node')
-        for i in range(len(colheader)):
-            e=maketree(colheader[i],row[i])
+        for t in row:
+            e=maketree(t,row[t])
+            r.append(e)
+        for t in newtag:
+            e=maketree(t,row[newtag[t]])
             r.append(e)
 
     return graph
