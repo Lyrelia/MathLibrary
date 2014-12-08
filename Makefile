@@ -19,10 +19,10 @@ $(bname).png $(bname).map: $(bname).dot
 $(bname).html: $(bname).xml $(bname).map $(bname).png tooltip.js
 	xsltproc util/gtohtml.xsl $(bname).map > $@
 
-$(ibname).tex: $(bname).xml
+$(ibname).tex: $(bname).xml $(bname).map
 	xsltproc util/index.xsl $< > $@
 
-$(ibname).html: $(ibname).tex tooltip.js
+$(ibname).html: $(ibname).tex $(bname).png tooltip.js
 	htlatex $< "util/ht5mjlatex.cfg,charset=utf-8,3,next" " -cunihtf -utf8"
 
 tooltip.js:
