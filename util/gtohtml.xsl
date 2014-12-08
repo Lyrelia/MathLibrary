@@ -13,18 +13,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
   <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
   <script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full'></script>
-  <script>
-  $(function() {
-    $('area').tooltip({
-      track: true,
-      content: function () {
-        return $('#'+this.getAttribute('graphkey')+'_tip').html()
-          <!-- return $(this).attr('href') -->
-          <!-- return "tooltip"; -->
-      }
-    });
-  });
-  </script>
+  <script src="tooltip.js"></script>
 </head>
 <body>
   <img src='table.png' usemap='#mathlib' />
