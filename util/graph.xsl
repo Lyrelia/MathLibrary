@@ -9,7 +9,7 @@ digraph {
   <xsl:for-each select="graph/node">
     <xsl:value-of select="key" /> [label="<xsl:value-of select="object_name" />",color=<xsl:choose>
       <xsl:when test="object_type='Definition'">red</xsl:when>
-      <xsl:when test="object_type='Theorem'">gree</xsl:when>
+      <xsl:when test="object_type='Theorem'">green</xsl:when>
       <xsl:when test="object_type='Proof'">blue</xsl:when>
       <xsl:otherwise>black</xsl:otherwise>
     </xsl:choose>];
