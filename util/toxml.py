@@ -5,7 +5,7 @@ import re
 import sys
 
 tag = { 'children' : lambda s: commasplit('children',s),
-        'attributed_text' : lambda s: convertlinks('attributed_text',s) }
+        'attributed_text' : lambda s: linkstohyperref('attributed_text',s) }
 
 def commasplit(t,s):
     r=ET.Element(t)
@@ -16,7 +16,12 @@ def commasplit(t,s):
         r.append(e)
     return r
 
-def convertlinks(t,s):
+def linkstohyperref(t,s):
+    r=ET.Element(t)
+    r.text=re.sub('\\\\href{(.*?)}{(.*?)}','\hyperref[\\1]{\\2}',s)
+    return r
+
+def linkstoxml(t,s):
     sl=re.split('\\\\href\\{(.*?)\\}\\{(.*?)\\}',s)
     tb=ET.TreeBuilder()
     tb.start(t)

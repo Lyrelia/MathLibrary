@@ -9,10 +9,11 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:template match="/">
 \documentclass{article}
 \usepackage{amsmath,amssymb}
+\usepackage{hyperref}
 
 \title{Math library}
 \begin{document}
-\maketitle
+\maketitle \tableofcontents
 
 \section{Graph}
 
