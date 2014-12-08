@@ -15,8 +15,11 @@ show: $(bname).dot
 $(bname).png $(bname).map: $(bname).dot
 	neato -Tpng -o$(bname).png -Tcmapx -o$(bname).map $(neatoargs) $<
 
+$(bname).html: $(bname).xml $(bname).map $(bname).png
+	xsltproc util/gtohtml.xsl $(bname).map > $@
 
-
+clean:
+	rm -f $(bname).{xml,dot,png,map,html}
 
 
 # #/bin/bash
