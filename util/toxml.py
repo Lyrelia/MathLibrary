@@ -9,6 +9,7 @@ tag = { 'children' : lambda s: commasplit('children',s),
 
 def commasplit(t,s):
     r=ET.Element(t)
+    if s=='': return r
     for c in s.split(','):
         e=ET.Element('t')
         e.text=c
