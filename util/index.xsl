@@ -27,16 +27,17 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 \ifdefined\HCode
 \section{Graph}\label{index:graph}
 
+\Configure{Link}{area}{href=}{name=}{}
 \HCode{<img src="table.png" usemap="\#mathlib" />
-<map id="mathlib" name="mathlib">
-<xsl:for-each select="document('../table.map')/map/area">
-  <area shape="poly" id="{@id}" title="{@title}" graphkey="{@href}" alt="" coords="{@coords}">
-    <xsl:attribute name="href">test</xsl:attribute>
-  </area>
-  <!-- <  coords="<xsl:value-of select="@coords"/>" id="<xsl:value-of select="@id"/>" --> 
-  <!-- graphkey="<xsl:value-of select="@href" />" shape="poly" alt=""]{<xsl:value-of select="@href"/><xsl:value-of select="@title"/> -->
-</xsl:for-each>
-</map>}
+<map id="mathlib" name="mathlib">}<xsl:for-each select="document('../table.map')/map/area">\Link[   shape="poly" 
+    id="<xsl:value-of select="@id" />"
+    title="<xsl:value-of select="@title" />"
+    graphkey="<xsl:value-of select="@href" />"
+    alt=""
+    coords="<xsl:value-of select="@coords" />"]
+    {<xsl:value-of select="@href" />}{}</xsl:for-each>
+\Configure{Link}{a}{href=}{name=}{}
+\HCode{</map>}
 
 <xsl:for-each select="document('../table.map')/map/area">
 \HCode{<div id='{@href}_tip' style='display: none'>}
