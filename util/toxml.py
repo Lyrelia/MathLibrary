@@ -26,7 +26,7 @@ def linkstohyperref(t,s):
 def linkstoxml(t,s,keeptext):
     sl=re.split('\\\\href\\{(.*?)\\}\\{(.*?)\\}',s)
     tb=ET.TreeBuilder()
-    tb.start(t)
+    tb.start(t,{})
     for i in range(len(sl)):
         if i % 3 == 0 and keeptext: # between matches
             tb.data(sl[i])
