@@ -15,6 +15,15 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 \begin{document}
 \maketitle
 
+\newcommand{\newsection}[3]
+{\subsection{#2}\label{#1}
+\ifdefined\Link \Link{}{#1}\EndLink \fi
+\noindent\hyperref[index:graph]{Back to graph}
+
+#3
+
+\noindent\hyperref[index:graph]{Back to graph}}
+
 \ifdefined\HCode
 \section{Graph}\label{index:graph}
 
@@ -39,34 +48,25 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 \section{Definitions}
 <xsl:for-each select="key('type','Definition')">
   <xsl:sort select="object_name"/>
-  \subsection{<xsl:value-of select="object_name"/>}\label{<xsl:value-of select="key"/>}
-  \noindent\hyperref[index:graph]{Back to graph}
-
-  <xsl:value-of select="attributed_text"/>
-
-  \noindent\hyperref[index:graph]{Back to graph}
+  \newsection{<xsl:value-of select="key"/>}
+  {<xsl:value-of select="object_name"/>}
+  {<xsl:value-of select="attributed_text"/>}
 </xsl:for-each>
 
 \section{Theorems}
 <xsl:for-each select="key('type','Theorem')">
   <xsl:sort select="object_name"/>
-  \subsection{<xsl:value-of select="object_name"/>}\label{<xsl:value-of select="key"/>}
-  \noindent\hyperref[index:graph]{Back to graph}
-  
-  <xsl:value-of select="attributed_text"/>
-
-  \noindent\hyperref[index:graph]{Back to graph}
+  \newsection{<xsl:value-of select="key"/>}
+  {<xsl:value-of select="object_name"/>}
+  {<xsl:value-of select="attributed_text"/>}
 </xsl:for-each>
 
 \section{Proofs}
 <xsl:for-each select="key('type','Proof')">
   <xsl:sort select="object_name"/>
-  \subsection{<xsl:value-of select="object_name"/>}\label{<xsl:value-of select="key"/>}
-  \noindent\hyperref[index:graph]{Back to graph}
-
-  <xsl:value-of select="attributed_text"/>
-
-  \noindent\hyperref[index:graph]{Back to graph}
+  \newsection{<xsl:value-of select="key"/>}
+  {<xsl:value-of select="object_name"/>}
+  {<xsl:value-of select="attributed_text"/>}
 </xsl:for-each>
 
 \end{document}
