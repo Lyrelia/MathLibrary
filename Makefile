@@ -2,7 +2,7 @@ bname=table
 ibname=index
 edgelen=3
 
-neatoargs=-Elen=$(edgelen)
+dotargs=
 
 $(bname).xml: $(bname).tex
 	util/toxml.py $< > $@
@@ -11,10 +11,10 @@ $(bname).dot: $(bname).xml
 	xsltproc util/graph.xsl $< > $@
 
 show: $(bname).dot
-	neato -Txlib $(neatoargs) $<
+	dot -Txlib $(dotargs) $<
 
 $(bname).png $(bname).map: $(bname).dot
-	neato -Tpng -o$(bname).png -Tcmapx -o$(bname).map $(neatoargs) $<
+	dot -Tpng -o$(bname).png -Tcmapx -o$(bname).map $(dotargs) $<
 
 $(bname).html: $(bname).xml $(bname).map $(bname).png tooltip.js
 	xsltproc util/gtohtml.xsl $(bname).map > $@
