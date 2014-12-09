@@ -4,6 +4,11 @@ edgelen=3
 
 dotargs=
 
+all: $(ibname).html
+
+$(bname).tex: $(bname).lyx
+	/cygdrive/c/Program\ Files\ \(x86\)/LyX\ 2.0/bin/LyX.exe --export "latex" $<
+
 $(bname).xml: $(bname).tex
 	util/toxml.py $< > $@
 
