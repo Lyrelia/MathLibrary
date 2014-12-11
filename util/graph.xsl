@@ -15,7 +15,7 @@ digraph mathlib {
     </xsl:choose>,
     href="<xsl:value-of select="key"/>"];
   <xsl:for-each select="links/a">
-    <xsl:value-of select="../../key"/><xsl:value-of select="' -> '"/><xsl:value-of select="@href"/>;
+    <xsl:value-of select="@href"/><xsl:value-of select="' -> '"/><xsl:value-of select="../../key"/>;
   </xsl:for-each>
   </xsl:for-each>
 }
