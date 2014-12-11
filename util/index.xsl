@@ -45,7 +45,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 \HCode{&lt;/map&gt;}
 
 <xsl:for-each select="document('../table.map')/map/area">
-\HCode{&lt;div id='{@href}_tip' style='display: none'&gt;}
+  \HCode{&lt;div id='<xsl:value-of select="@href" />_tip' style='display: none'&gt;}
   <xsl:value-of select="document('../table.xml')/graph/node[key=current()/@href]/attributed_text" />
 \HCode{&lt;/div&gt;}
 </xsl:for-each>
