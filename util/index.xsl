@@ -54,7 +54,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   \newsection{<xsl:value-of select="key"/>}
   {<xsl:value-of select="object_name"/>}
   {<xsl:value-of select="attributed_text"/>}
-  {<xsl:if test="node_file != ''"><img src="{node_file}" /></xsl:if>}
+  {<xsl:if test="node_file != ''"><img src="res/{node_file}" /></xsl:if>}
 </xsl:for-each>
 
 \section{Theorems}
@@ -63,7 +63,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   \newsection{<xsl:value-of select="key"/>}
   {<xsl:value-of select="object_name"/>}
   {<xsl:value-of select="attributed_text"/>}
-  {<xsl:if test="node_file != ''"><img src="{node_file}" /></xsl:if>}
+  {<xsl:if test="node_file != ''"><img src="res/{node_file}" /></xsl:if>}
 </xsl:for-each>
 
 \section{Proofs}
@@ -72,7 +72,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   \newsection{<xsl:value-of select="key"/>}
   {<xsl:value-of select="object_name"/>}
   {<xsl:value-of select="attributed_text"/>}
-  {<xsl:if test="node_file != ''"><img src="{node_file}" /></xsl:if>}
+  {<xsl:if test="node_file != ''"><img src="res/{node_file}" /></xsl:if>}
 </xsl:for-each>
 
 \end{document}
