@@ -15,10 +15,12 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 \begin{document}
 \maketitle
 
-\newcommand{\newsection}[3]
+\newcommand{\newsection}[4]
 {\subsection{#2}\label{#1}
 \ifdefined\Link \Link{}{#1}\EndLink \fi
 \noindent\hyperref[index:graph]{Back to graph}
+
+\ifdefined\HCode\HCode{#4}\fi
 
 #3
 
@@ -52,6 +54,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   \newsection{<xsl:value-of select="key"/>}
   {<xsl:value-of select="object_name"/>}
   {<xsl:value-of select="attributed_text"/>}
+  {<xsl:if test="node_file != ''"><img src="{node_file}" /></xsl:if>}
 </xsl:for-each>
 
 \section{Theorems}
@@ -60,6 +63,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   \newsection{<xsl:value-of select="key"/>}
   {<xsl:value-of select="object_name"/>}
   {<xsl:value-of select="attributed_text"/>}
+  {<xsl:if test="node_file != ''"><img src="{node_file}" /></xsl:if>}
 </xsl:for-each>
 
 \section{Proofs}
@@ -68,6 +72,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   \newsection{<xsl:value-of select="key"/>}
   {<xsl:value-of select="object_name"/>}
   {<xsl:value-of select="attributed_text"/>}
+  {<xsl:if test="node_file != ''"><img src="{node_file}" /></xsl:if>}
 </xsl:for-each>
 
 \end{document}
