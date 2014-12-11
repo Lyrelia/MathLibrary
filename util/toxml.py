@@ -4,8 +4,8 @@ import xml.etree.ElementTree as ET
 import re
 import sys
 
-tag = { 'links' : lambda s: linkstoxml('links',s,False),
-        'attributed_text' : lambda s: linkstohyperref('attributed_text',s) }
+tag = { 'links' : lambda s: linkstoxml('links',xmlsafe(s),False),
+        'attributed_text' : lambda s: linkstohyperref('attributed_text',xmlsafe(s)) }
 
 newtag = { 'links' : 'attributed_text' }
 
@@ -20,11 +20,11 @@ def commasplit(t,s):
 
 def linkstohyperref(t,s):
     r=ET.Element(t)
-    r.text=re.sub('\\\\href{(.*?)}{(.*?)}','\hyperref[\\1]{\\2}',s)
+    r.text=re.sub(r'\\href{(.*?)}{(.*?)}',r'\hyperref[\1]{\2}',s)
     return r
 
 def linkstoxml(t,s,keeptext):
-    sl=re.split('\\\\href\\{(.*?)\\}\\{(.*?)\\}',s)
+    sl=re.split(r'\\href\{(.*?)\}\{(.*?)\}',s)
     tb=ET.TreeBuilder()
     tb.start(t,{})
     for i in range(len(sl)):
@@ -44,6 +44,11 @@ def maketree(t,s):
         r=ET.Element(t)
         r.text=s
         return r
+
+def xmlsafe(s):
+    s=re.sub(r'\<',r'\\lt',s)
+    s=re.sub(r'\>',r'\\gt',s)
+    return s
 
 def main():
     xml = readfile(sys.argv[1])

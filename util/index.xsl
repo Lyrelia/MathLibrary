@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0"
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:output method="html" indent="no" encoding="UTF-8"/>
+<xsl:output method="text" indent="no" encoding="UTF-8"/>
 
 <xsl:key name="type" match="node" use="object_type" />
 
@@ -14,6 +14,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 \title{Math library}
 \begin{document}
 \maketitle
+
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
 
 \newcommand{\newsection}[4]
 {\subsection{#2}\label{#1}
@@ -30,8 +33,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 \section{Graph}\label{index:graph}
 
 \Configure{Link}{area}{href=}{name=}{}
-\HCode{<img src="table.png" usemap="\#mathlib" />
-<map id="mathlib" name="mathlib">}<xsl:for-each select="document('../table.map')/map/area">\Link[   shape="poly" 
+\HCode{&lt;img src="table.png" usemap="\#mathlib"&gt;
+&lt;map id="mathlib" name="mathlib"&gt;}<xsl:for-each select="document('../table.map')/map/area">\Link[   shape="poly" 
     id="<xsl:value-of select="@id" />"
     title="<xsl:value-of select="@title" />"
     graphkey="<xsl:value-of select="@href" />"
@@ -39,12 +42,12 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     coords="<xsl:value-of select="@coords" />"]
     {<xsl:value-of select="@href" />}{}</xsl:for-each>
 \Configure{Link}{a}{href=}{name=}{}
-\HCode{</map>}
+\HCode{&lt;/map&gt;}
 
 <xsl:for-each select="document('../table.map')/map/area">
-\HCode{<div id='{@href}_tip' style='display: none'>}
+\HCode{&lt;div id='{@href}_tip' style='display: none'&gt;}
   <xsl:value-of select="document('../table.xml')/graph/node[key=current()/@href]/attributed_text" />
-\HCode{</div>}
+\HCode{&lt;/div&gt;}
 </xsl:for-each>
 \fi
 
