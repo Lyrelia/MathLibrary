@@ -46,8 +46,8 @@ def maketree(t,s):
         return r
 
 def xmlsafe(s):
-    s=re.sub(r'\<',r'\\lt',s)
-    s=re.sub(r'\>',r'\\gt',s)
+    s=re.sub(r'\<',r'\\lt ',s)
+    s=re.sub(r'\>',r'\\gt ',s)
     return s
 
 def main():
