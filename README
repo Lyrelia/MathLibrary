@@ -1,0 +1,11 @@
+dependencies:
+
+libxslt
+python
+texlive binaries and htmlxml
+lyx
+an X font
+graphviz
+make
+
+to use, ensure path to lyx binary is correct in Makefile
